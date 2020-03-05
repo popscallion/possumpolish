@@ -5,10 +5,13 @@ def concatenateVideos(video_files, codec, interval=1):
     frame_index = 0
     video_index = 0
     cap = cv2.VideoCapture(video_files[0])
+    frame_width = int(cap.get(3))
+    frame_height = int(cap.get(4))
+    frame_rate = round(cap.get(5),2)
     output_name = "concatenated_1in"+str(interval)+".avi"
     out = cv2.VideoWriter(output_name, 
                           cv2.VideoWriter_fourcc(*codec), 
-                          round(cap.get(5),2),(int(capA.get(3)), int(capA.get(4))))
+                          frame_rate,(frame_width, frame_height))
     while(cap.isOpened()):
         ret, frame = cap.read()
         frame_index += 1
