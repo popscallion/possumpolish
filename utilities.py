@@ -24,7 +24,7 @@ def scanDir(directory, extension='avi', filter_string=None, filter_out=False, ve
         else:
             file_list = [file for file in file_list if re.search(filter_string, file)]
     return(file_list)
-        
+
 def tandemPreviews(video_dict):
     fourcc = cv2.VideoWriter_fourcc('m','p','4','v')
     capA = cv2.VideoCapture(os.path.join(video_dict['path'],video_dict['c1'][0]))
